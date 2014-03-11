@@ -22,39 +22,18 @@
 *
 */
 
+#include "RViennaCL.h"
+
 // activate ublas support in ViennaCL
-#define VIENNACL_WITH_UBLAS
-
-//
-// include necessary system headers
-//
-#include <iostream>
-
-//
-// ViennaCL includes: We only need the qr-header
-//
-#include "viennacl/linalg/qr.hpp"
-
-//
-// Boost includes
-//
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/io.hpp>
+//#define VIENNACL_WITH_UBLAS
 
 
-//
-// Testing
-//
-#include "viennacl/range.hpp"
-#include "viennacl/linalg/prod.hpp"
-#include "viennacl/matrix.hpp"
-#include "viennacl/matrix_proxy.hpp"
-
-
-//
-// A helper function checking the result
-//
+//' A helper function checking the result
+//'
+//' @param qr Matrix generated on GPU
+//' @param ref Matrix with reference values
+// [[Rcpp::export]]
+// [[Rcpp::interfacesr(r,cpp)]]
 template <typename MatrixType>
 double check(MatrixType const & qr, MatrixType const & ref)
 {
